@@ -3,7 +3,15 @@ package ejemplo.programa;
 import ejemplo.base.Alumno;
 import ejemplo.base.Profesor;
 import ejemplo.base.Asignatura;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.HashSet;
 
@@ -29,5 +37,15 @@ public class Programa {
         asignaturas.add(asignatura1);
         asignaturas.add(asignatura2);
         asignaturas.add(asignatura3);
+
+        try {
+            JasperReport informe = (JasperReport) JRLoader.loadObject(new File("informes/Blank.jasper"));
+            JRBeanCollectionDataSource coleccion = new JRBeanCollectionDataSource(asignaturas);
+            JasperPrint print = JasperFillManager.fillReport(informe,null,coleccion);
+            JasperViewer visor = new JasperViewer(print);
+            visor.setVisible(true);
+        } catch (JRException e){
+            e.printStackTrace();
+        }
     }
 }

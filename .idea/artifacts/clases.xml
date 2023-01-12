@@ -4,6 +4,7 @@
     <root id="archive" name="clases.jar">
       <element id="directory" name="ejemplo">
         <element id="directory" name="base">
+          <element id="file-copy" path="$PROJECT_DIR$/out/production/EjemploInformes/ejemplo/base/Alumno.class" />
           <element id="file-copy" path="$PROJECT_DIR$/out/production/EjemploInformes/ejemplo/base/Asignatura.class" />
           <element id="file-copy" path="$PROJECT_DIR$/out/production/EjemploInformes/ejemplo/base/Profesor.class" />
         </element>
